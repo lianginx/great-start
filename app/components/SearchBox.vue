@@ -57,7 +57,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div ref="dropdownRef" class="relative w-full lg:w-5/12 animate-fade-in" style="animation-delay: 0.1s">
+  <div ref="dropdownRef" class="relative w-full lg:w-6/12 animate-fade-in" style="animation-delay: 0.1s">
     <!-- 输入框 -->
     <div
       class="flex items-center border border-[var(--border)] bg-[var(--bg-secondary)] hover:border-[var(--text-muted)] transition-colors"

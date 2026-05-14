@@ -3,10 +3,10 @@ const { config } = useConfig()
 </script>
 
 <template>
-  <div v-if="config?.bookmark" class="w-full lg:w-10/12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+  <div v-if="config?.bookmark" class="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
     <div
       v-for="group in config.bookmark" :key="group.name"
-      class="border border-[var(--border)] bg-[var(--bg-secondary)] p-4 sm:p-5 animate-fade-in"
+      class="border border-[var(--border)] bg-[var(--bg-secondary)] p-4 sm:p-6 animate-fade-in"
     >
       <!-- 分组标题 -->
       <div class="flex items-center gap-2 mb-4 pb-2 border-b border-[var(--border)]">
