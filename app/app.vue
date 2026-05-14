@@ -26,11 +26,14 @@ const { config, reset } = useConfig()
 
       <!-- 底部装饰 -->
       <footer class="text-center animate-fade-in">
-        <div class="flex items-center justify-center gap-2 text-[var(--text-muted)] text-xs">
-          <span class="text-[var(--green)]">$</span>
-          <span>home</span>
-          <span class="text-[var(--green)]">--</span>
-          <span>v1.0</span>
+        <div class="flex items-center justify-center gap-4 text-[var(--text-muted)] text-xs">
+          <span>
+            <span class="text-[var(--green)]">$</span>
+            home
+            <span class="text-[var(--green)]">--</span>
+            v1.0
+          </span>
+          <ConfigEditor />
         </div>
       </footer>
     </div>
