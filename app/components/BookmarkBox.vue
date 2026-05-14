@@ -20,12 +20,10 @@ const { config } = useConfig()
       <!-- 链接列表 -->
       <div class="grid grid-cols-2 xl:grid-cols-3 gap-1">
         <a
-          v-for="site in group.items" :key="site.name" :href="site.url" target="_blank"
+          v-for="site in group.items" :key="site.name" :href="site.url"
           class="group relative flex items-center gap-1 py-1 text-sm text-[var(--text-muted)] hover:text-[var(--text)] transition-colors"
         >
-          <span
-            class="absolute -left-3 text-[var(--green)] opacity-0 group-hover:opacity-100 transition-opacity text-xs"
-          >></span>
+          <span class="absolute -left-3 text-[var(--green)] opacity-0 group-hover:opacity-100 transition-opacity text-xs">></span>
           <span class="line-clamp-1">{{ site.name }}</span>
         </a>
       </div>
