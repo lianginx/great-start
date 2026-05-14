@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { config, reset } = useConfig()
+const { config } = useConfig()
 </script>
 
 <template>
@@ -11,7 +11,7 @@ const { config, reset } = useConfig()
     <div class="w-full max-w-6xl space-y-12">
       <!-- 头部：时钟 -->
       <header>
-        <DateTime @click="reset" />
+        <DateTime />
       </header>
 
       <!-- 搜索框 -->
