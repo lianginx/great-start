@@ -11,12 +11,8 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
-      link: [
-        { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
-      ],
-      style: [
-        { innerHTML: 'body { background-color: #0a0a0a; }' },
-      ],
+      title: '$ home',
+      link: [{ rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
     },
   },
 })
