@@ -1,9 +1,54 @@
 :root {
-  --bg: #000;
-  --text: #fff;
+  --bg: #0a0a0a;
+  --bg-secondary: #111111;
+  --text: #e0e0e0;
+  --text-muted: #666666;
+  --green: #00ff00;
+  --green-dim: #00cc00;
+  --border: #222222;
+  --shadow: rgba(0, 255, 0, 0.03);
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
   background-color: var(--bg);
   color: var(--text);
+  font-family: 'SF Mono', 'Menlo', 'Consolas', 'Courier New', monospace;
+}
+
+::selection {
+  background-color: var(--green);
+  color: var(--bg);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s cubic-bezier(0.2, 0, 0, 1) forwards;
+}
+
+.animate-blink {
+  animation: blink 1s step-end infinite;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
 }

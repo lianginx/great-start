@@ -22,18 +22,28 @@ const time = computed(() => {
 let timer: ReturnType<typeof setInterval>
 
 onMounted(() => {
-  timer = setInterval(
-    () => { now.value = new Date() },
-    1000
-  )
+  timer = setInterval(() => {
+    now.value = new Date()
+  }, 1000)
 })
 
 onUnmounted(() => clearInterval(timer))
 </script>
 
 <template>
-  <div class="text-center">
-    <div class="text-6xl font-bold font-mono">{{ time }}</div>
-    <div class="text-lg text-gray-500 mt-2">{{ date }}</div>
+  <div class="text-center animate-fade-in">
+    <div class="flex items-center justify-center gap-2 mb-2">
+      <span class="text-[var(--green)] text-sm">></span>
+      <span class="text-[var(--text-muted)] text-sm">date</span>
+    </div>
+    <div class="text-6xl font-bold font-mono tabular-nums tracking-wider">
+      {{ time }}
+    </div>
+    <div class="text-[var(--green-dim)] mt-3 text-sm tracking-wide">
+      {{ date }}
+    </div>
+    <div class="flex items-center justify-center gap-1 mt-4">
+      <span class="text-[var(--green)] animate-blink">_</span>
+    </div>
   </div>
 </template>
