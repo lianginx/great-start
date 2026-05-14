@@ -8,24 +8,24 @@ const { config, reset } = useConfig()
     <div class="fixed top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--green)] to-transparent opacity-20" />
 
     <!-- 主要内容 -->
-    <div class="w-full max-w-4xl space-y-12">
+    <div class="w-full max-w-6xl space-y-12">
       <!-- 头部：时钟 -->
       <header>
         <DateTime @click="reset" />
       </header>
 
       <!-- 搜索框 -->
-      <section>
+      <section class="flex justify-center">
         <SearchBox />
       </section>
 
       <!-- 书签 -->
-      <section>
+      <section class="flex justify-center">
         <BookmarkBox />
       </section>
 
       <!-- 底部装饰 -->
-      <footer class="text-center animate-fade-in" style="animation-delay: 0.5s">
+      <footer class="text-center animate-fade-in">
         <div class="flex items-center justify-center gap-2 text-[var(--text-muted)] text-xs">
           <span class="text-[var(--green)]">$</span>
           <span>home</span>

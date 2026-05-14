@@ -6,7 +6,7 @@ const date = computed(() => {
     year: 'numeric',
     month: '2-digit',
     day: '2-digit',
-    weekday: 'long'
+    weekday: 'long',
   })
 })
 
@@ -15,7 +15,7 @@ const time = computed(() => {
     hour: '2-digit',
     minute: '2-digit',
     second: '2-digit',
-    hour12: false
+    hour12: false,
   })
 })
 

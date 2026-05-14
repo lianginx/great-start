@@ -42,7 +42,7 @@ body {
 }
 
 .animate-fade-in {
-  animation: fadeIn 0.5s cubic-bezier(0.2, 0, 0, 1) forwards;
+  animation: fadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) backwards;
 }
 
 .animate-blink {

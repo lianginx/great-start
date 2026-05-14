@@ -3,15 +3,10 @@ const { config } = useConfig()
 </script>
 
 <template>
-  <div
-    v-if="config?.bookmark"
-    class="w-full lg:w-10/12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"
-  >
+  <div v-if="config?.bookmark" class="w-full lg:w-10/12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
     <div
-      v-for="(group, groupIndex) in config.bookmark"
-      :key="group.name"
+      v-for="group in config.bookmark" :key="group.name"
       class="border border-[var(--border)] bg-[var(--bg-secondary)] p-4 sm:p-5 animate-fade-in"
-      :style="{ animationDelay: `${0.2 + groupIndex * 0.1}s` }"
     >
       <!-- 分组标题 -->
       <div class="flex items-center gap-2 mb-4 pb-2 border-b border-[var(--border)]">
@@ -25,13 +20,12 @@ const { config } = useConfig()
       <!-- 链接列表 -->
       <div class="grid grid-cols-2 xl:grid-cols-3 gap-1">
         <a
-          v-for="site in group.items"
-          :key="site.name"
-          :href="site.url"
-          target="_blank"
-          class="group flex items-center gap-1 py-1 text-sm text-[var(--text-muted)] hover:text-[var(--text)] transition-colors"
+          v-for="site in group.items" :key="site.name" :href="site.url" target="_blank"
+          class="group relative flex items-center gap-1 py-1 text-sm text-[var(--text-muted)] hover:text-[var(--text)] transition-colors"
         >
-          <span class="text-[var(--green)] opacity-0 group-hover:opacity-100 transition-opacity text-xs">></span>
+          <span
+            class="absolute -left-3 text-[var(--green)] opacity-0 group-hover:opacity-100 transition-opacity text-xs"
+          >></span>
           <span class="line-clamp-1">{{ site.name }}</span>
         </a>
       </div>

@@ -47,15 +47,15 @@ const defaultConfig: Config = {
       items: [
         { name: 'DeepSeek', url: 'https://chat.deepseek.com' },
         { name: 'ChatGPT', url: 'https://chat.openai.com' },
-        { name: 'Grok', url: 'https://grok.com' }
-      ]
+        { name: 'Grok', url: 'https://grok.com' },
+      ],
     },
     {
       name: 'Tech',
       items: [
         { name: 'GitHub', url: 'https://github.com/' },
         { name: 'Nuxt', url: 'https://nuxt.com/' },
-      ]
+      ],
     },
     {
       name: 'Game',
@@ -70,27 +70,31 @@ const defaultConfig: Config = {
 const config = ref<Config | null>(null)
 
 watch(
-  config, (value) => localStorage.setItem(key, JSON.stringify(value)),
-  { deep: true }
+  config,
+  value => localStorage.setItem(key, JSON.stringify(value)),
+  { deep: true },
 )
 
 export function useConfig() {
   function load() {
     // 服务端跳过
-    if (!import.meta.client) return
+    if (!import.meta.client)
+      return
 
     const localConfig = localStorage.getItem(key)
 
     if (localConfig) {
       config.value = JSON.parse(localConfig)
-    } else {
+    }
+    else {
       config.value = defaultConfig
     }
   }
 
   function reset() {
     // 服务端跳过
-    if (!import.meta.client) return
+    if (!import.meta.client)
+      return
 
     localStorage.removeItem(key)
     load()

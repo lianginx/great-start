@@ -7,6 +7,7 @@ const { config } = useConfig()
 
 const isOpen = ref(false)
 const dropdownRef = ref<HTMLElement | null>(null)
+const inputRef = ref<HTMLInputElement | null>(null)
 
 const currentEngine = computed(() => {
   return config.value?.search[0]
@@ -42,6 +43,7 @@ function handleClickOutside(event: MouseEvent) {
 
 onMounted(() => {
   document.addEventListener('click', handleClickOutside)
+  inputRef.value?.focus()
 })
 
 onUnmounted(() => {
@@ -61,6 +63,7 @@ onUnmounted(() => {
       </button>
       <span class="text-[var(--text-muted)]">></span>
       <input
+        ref="inputRef"
         v-model="modelValue"
         class="flex-1 px-3 py-3 bg-transparent focus:outline-none text-sm placeholder:text-[var(--text-muted)]"
         placeholder="search..."
