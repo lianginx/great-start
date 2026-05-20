@@ -2,22 +2,7 @@
 
 一个简约的浏览器起始页，支持时钟、搜索引擎切换和书签管理。配置可远程备份至 GitHub Gist，实现多端同步。
 
-## 快速开始
-
-```bash
-pnpm dev       # 启动开发服务器
-pnpm generate  # 构建静态站点到 dist/
-pnpm build     # 构建 SSR 应用
-```
-
-### Docker
-
-```bash
-docker compose up -d
-# 访问 http://localhost:3080
-```
-
-## 功能
+![screenshot](./docs/img/home.png)
 
 | 功能 | 说明 |
 |------|------|
@@ -26,7 +11,14 @@ docker compose up -d
 | **书签** | 分组管理，YAML 编辑，支持导入/导出 |
 | **Gist 备份** | 配置自动同步到 GitHub Gist，多端恢复 |
 
-### Gist 备份
+## Docker 部署
+
+```bash
+docker compose up -d --build
+# 访问 http://localhost:3080
+```
+
+## Gist 备份
 
 1. 在 [GitHub Settings > Tokens](https://github.com/settings/tokens) 创建 classic token，勾选 `gist` 权限
 2. 打开页面，点击底部 `[~]`，输入 token 保存
@@ -48,6 +40,14 @@ app/
 └── composables/
     ├── useConfig.ts     # 配置管理
     └── useGistBackup.ts # Gist 同步
+```
+
+## 项目开发
+
+```bash
+pnpm dev       # 启动开发服务器
+pnpm generate  # 构建静态站点到 dist/
+pnpm build     # 构建 SSR 应用
 ```
 
 ## 技术栈
