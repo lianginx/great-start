@@ -3,6 +3,7 @@ import type { Config } from '@/composables/useConfig'
 import jsYaml from 'js-yaml'
 
 const { config } = useConfig()
+const gist = useGistBackup()
 
 const isOpen = ref(false)
 const yamlStr = ref('')
@@ -47,12 +48,41 @@ function save() {
     }
 
     config.value = parsed as Config
+    gist.sync(config.value)
     error.value = null
     close()
   }
   catch (e) {
     error.value = e instanceof Error ? e.message : 'YAML 格式错误'
   }
+}
+
+function exportConfig() {
+  const blob = new Blob([yamlStr.value], { type: 'text/yaml' })
+  const url = URL.createObjectURL(blob)
+  const a = document.createElement('a')
+  a.href = url
+  a.download = 'great-start-config.yaml'
+  a.click()
+  URL.revokeObjectURL(url)
+}
+
+function importConfig() {
+  const input = document.createElement('input')
+  input.type = 'file'
+  input.accept = '.yaml,.yml'
+  input.onchange = (e) => {
+    const file = (e.target as HTMLInputElement).files?.[0]
+    if (!file)
+      return
+    const reader = new FileReader()
+    reader.onload = () => {
+      yamlStr.value = reader.result as string
+      save()
+    }
+    reader.readAsText(file)
+  }
+  input.click()
 }
 </script>
 
@@ -96,8 +126,22 @@ function save() {
 
           <!-- 底部 -->
           <div class="flex items-center justify-between px-4 py-3 border-t border-[var(--border)]">
-            <div class="text-xs text-red-500">
-              {{ error }}
+            <div class="flex items-center gap-3">
+              <div class="text-xs text-red-500">
+                {{ error }}
+              </div>
+              <button
+                class="text-xs text-[var(--text-muted)] hover:text-[var(--text)] transition-colors"
+                @click="exportConfig"
+              >
+                导出
+              </button>
+              <button
+                class="text-xs text-[var(--text-muted)] hover:text-[var(--text)] transition-colors"
+                @click="importConfig"
+              >
+                导入
+              </button>
             </div>
             <div class="flex gap-2">
               <button

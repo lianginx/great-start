@@ -18,7 +18,7 @@ export interface Bookmark {
   url: string
 }
 
-const key = 'config'
+const LS_KEY = 'config'
 
 const defaultConfig: Config = {
   search: [
@@ -71,33 +71,28 @@ const config = ref<Config | null>(null)
 
 watch(
   config,
-  value => localStorage.setItem(key, JSON.stringify(value)),
+  (value) => {
+    if (value) {
+      localStorage.setItem(LS_KEY, JSON.stringify(value))
+    }
+  },
   { deep: true },
 )
 
 export function useConfig() {
   function load() {
-    // 服务端跳过
     if (!import.meta.client)
       return
 
-    const localConfig = localStorage.getItem(key)
-
-    if (localConfig) {
-      config.value = JSON.parse(localConfig)
-    }
-    else {
-      config.value = defaultConfig
-    }
+    const raw = localStorage.getItem(LS_KEY)
+    config.value = raw ? JSON.parse(raw) : defaultConfig
   }
 
   function reset() {
-    // 服务端跳过
     if (!import.meta.client)
       return
-
-    localStorage.removeItem(key)
-    load()
+    localStorage.removeItem(LS_KEY)
+    config.value = defaultConfig
   }
 
   if (!config.value) {
