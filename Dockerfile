@@ -12,15 +12,10 @@ RUN pnpm install --frozen-lockfile --ignore-scripts
 
 COPY . .
 
-RUN pnpm build
+RUN pnpm generate
 
-FROM base AS production
+FROM nginx:alpine
 
-WORKDIR /app
+COPY --from=build /app/dist /usr/share/nginx/html
 
-COPY --from=build /app/.output ./.output
-COPY --from=build /app/package.json ./
-
-EXPOSE 3080
-
-CMD ["node", ".output/server/index.mjs"]
+EXPOSE 80
