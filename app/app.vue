@@ -30,13 +30,12 @@ onMounted(async () => {
       </section>
 
       <footer class="text-center animate-fade-in">
-        <div class="flex items-center justify-center gap-4 text-[var(--text-muted)] text-xs">
+        <div class="flex items-center justify-center gap-2 text-[var(--text-muted)] text-xs">
           <span>
-            <span class="text-[var(--green)]">$</span>
-            home
-            <span class="text-[var(--green)]">--</span>
-            v1.0
+            <span class="text-[var(--green)] mr-1">$</span>
+            <span>></span>
           </span>
+          <WeatherBox />
           <GistBackup />
           <ConfigEditor />
         </div>

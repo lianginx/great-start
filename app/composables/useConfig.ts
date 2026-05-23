@@ -1,6 +1,7 @@
 export interface Config {
   search: Search[]
   bookmark: BookmarkGroup[]
+  weather?: Weather
 }
 
 export interface Search {
@@ -16,6 +17,10 @@ export interface BookmarkGroup {
 export interface Bookmark {
   name: string
   url: string
+}
+
+export interface Weather {
+  amapKey: string
 }
 
 const LS_KEY = 'config'
