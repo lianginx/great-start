@@ -63,8 +63,6 @@ export function useWeather() {
   }
 
   function getCache(): WeatherLive | null {
-    if (!import.meta.client)
-      return null
     try {
       const raw = localStorage.getItem(CACHE_KEY)
       if (!raw)
@@ -81,8 +79,6 @@ export function useWeather() {
   }
 
   function setCache(data: WeatherLive) {
-    if (!import.meta.client)
-      return
     try {
       const cache: WeatherCache = { data, timestamp: Date.now() }
       localStorage.setItem(CACHE_KEY, JSON.stringify(cache))

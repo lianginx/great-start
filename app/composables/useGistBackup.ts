@@ -17,8 +17,6 @@ export function useGistBackup() {
   const syncError = ref<string | null>(null)
 
   function loadSettings() {
-    if (!import.meta.client)
-      return
     try {
       const raw = localStorage.getItem(LS_KEY)
       if (raw)
@@ -28,8 +26,6 @@ export function useGistBackup() {
   }
 
   function persist() {
-    if (!import.meta.client)
-      return
     localStorage.setItem(LS_KEY, JSON.stringify(settings.value))
   }
 
@@ -58,7 +54,7 @@ export function useGistBackup() {
   }
 
   async function sync(config: Config) {
-    if (!import.meta.client || !settings.value.token)
+    if (!settings.value.token)
       return
 
     const dump = jsYaml.dump(config, { indent: 2 })
@@ -127,7 +123,7 @@ export function useGistBackup() {
   }
 
   async function restore(): Promise<Config | null> {
-    if (!import.meta.client || !settings.value.token || !settings.value.gistId)
+    if (!settings.value.token || !settings.value.gistId)
       return null
 
     syncing.value = true
@@ -163,7 +159,7 @@ export function useGistBackup() {
   }
 
   async function findGist(): Promise<string | null> {
-    if (!import.meta.client || !settings.value.token)
+    if (!settings.value.token)
       return null
 
     try {

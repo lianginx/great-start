@@ -86,16 +86,11 @@ watch(
 
 export function useConfig() {
   function load() {
-    if (!import.meta.client)
-      return
-
     const raw = localStorage.getItem(LS_KEY)
     config.value = raw ? JSON.parse(raw) : defaultConfig
   }
 
   function reset() {
-    if (!import.meta.client)
-      return
     localStorage.removeItem(LS_KEY)
     config.value = defaultConfig
   }
