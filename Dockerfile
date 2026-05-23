@@ -1,6 +1,6 @@
 FROM node:22-alpine AS base
 
-RUN corepack enable && corepack prepare pnpm@10 --activate
+RUN corepack enable && corepack prepare pnpm@11.2.1 --activate
 
 FROM base AS build
 
