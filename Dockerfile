@@ -1,6 +1,6 @@
 FROM node:22-alpine AS base
 
-RUN corepack enable && corepack prepare pnpm@11.2.1 --activate
+RUN corepack enable && corepack prepare pnpm@11 --activate
 
 FROM base AS build
 
@@ -16,6 +16,6 @@ RUN pnpm generate
 
 FROM nginx:alpine
 
-COPY --from=build /app/dist /usr/share/nginx/html
+COPY --from=build /app/.output/public /usr/share/nginx/html
 
 EXPOSE 80
